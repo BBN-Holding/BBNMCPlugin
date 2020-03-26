@@ -1,0 +1,7 @@
+name: BBNPlugin
+version: 1.0.0
+main: com.hax.bbnmcplugin.BBNPlugin
+commands:
+  MLG:
+    usage: /MLG [Player1] [Player2] [Player3] ...
+    description: Does an mlg with da player
