@@ -13,6 +13,7 @@ import java.util.HashMap;
 public class BBNPlugin extends JavaPlugin {
 
     HashMap<String, String> objectivesMap = new HashMap<>();
+    JDA jda = null;
 
     @Override
     public void onEnable() {
@@ -21,7 +22,7 @@ public class BBNPlugin extends JavaPlugin {
         this.saveDefaultConfig();
 
         String token = this.getConfig().getString("token");
-        JDA jda = null;
+
         if (token!=null) {
             this.getLogger().warning("Bot starting!");
             try {
@@ -45,6 +46,7 @@ public class BBNPlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        jda.shutdownNow();
         getLogger().info("BBNPlugin is shutting down!");
     }
 }
