@@ -104,12 +104,14 @@ public class Listener implements org.bukkit.event.Listener {
                 guild.retrieveMembers()
                         .thenApply((v) -> guild.getMemberCache())
                         .thenAccept((members) -> {
-                            event.getPlayer().getServer().broadcastMessage(String.valueOf(members.size()));
+                            int count2 = 0;
                             for (Member member : members) {
                                 for (Activity activity:member.getActivities()) {
-                                    event.getPlayer().getServer().broadcastMessage(activity.getName());
+                                    if (activity.getName().toLowerCase().contains("minecraft"))
+                                        count2++;
                                 }
                             }
+                            event.getPlayer().getServer().broadcastMessage("§7[§4BBN§7] §6There are "+count2+" members playing Minecraft...");
                         });
                 if (count == 0) {
                     if (event.getPlayer().getServer().getOnlinePlayers().size() == 1) {

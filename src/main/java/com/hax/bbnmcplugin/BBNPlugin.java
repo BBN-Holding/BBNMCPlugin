@@ -3,11 +3,9 @@ package com.hax.bbnmcplugin;
 import com.hax.bbnmcplugin.commands.MLGCommand;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
-import net.dv8tion.jda.api.requests.GatewayIntent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import javax.security.auth.login.LoginException;
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class BBNPlugin extends JavaPlugin {
@@ -26,7 +24,7 @@ public class BBNPlugin extends JavaPlugin {
         if (token!=null) {
             this.getLogger().warning("Bot starting!");
             try {
-                jda = JDABuilder.createDefault(token, Arrays.asList(GatewayIntent.values())).build();
+                jda = new JDABuilder().setToken(token).build();
                 this.getLogger().warning("Bot started!");
             } catch (LoginException e) {
                 e.printStackTrace();
